@@ -5,12 +5,12 @@ namespace Conveyor.Services.Orders.Commands
 {
     public class CreateOrder : ICommand
     {
-        public Guid Id { get; }
+        public Guid OrderId { get; }
         public Guid CustomerId { get; }
 
         public CreateOrder(Guid id, Guid customerId)
         {
-            Id = id;
+            OrderId = id == Guid.Empty ? Guid.NewGuid() : id;
             CustomerId = customerId;
         }
     }

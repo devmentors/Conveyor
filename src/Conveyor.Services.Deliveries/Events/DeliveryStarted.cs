@@ -5,11 +5,11 @@ namespace Conveyor.Services.Deliveries.Events
 {
     public class DeliveryStarted : IEvent
     {
-        public Guid Id { get; }
+        public Guid DeliveryId { get; }
 
-        public DeliveryStarted(Guid id)
+        public DeliveryStarted(Guid deliveryId)
         {
-            Id = id;
+            DeliveryId = deliveryId;
         }
     }
 }

@@ -15,9 +15,10 @@ namespace Conveyor.Services.Orders.Events.External.Handlers
             _logger = logger;
         }
 
-        public async Task HandleAsync(DeliveryStarted @event)
+        public Task HandleAsync(DeliveryStarted @event)
         {
-            _logger.LogInformation($"Received delivery started event with id {@event.Id}");
+            _logger.LogInformation($"Received a 'delivery started' event with id: {@event.DeliveryId}");
+            return Task.CompletedTask;
         }
     }
 }

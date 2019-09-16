@@ -12,6 +12,7 @@ using Conveyor.Services.Deliveries.Events.External;
 using Conveyor.Services.Deliveries.RabbitMQ;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Conveyor.Services.Deliveries
@@ -37,6 +38,9 @@ namespace Conveyor.Services.Deliveries
                     .AddWebApi()
                     .Build())
                 .Configure(app => app
+                    .UseEndpoints(endpoints => endpoints
+                        .Get("", ctx => ctx.Response.WriteAsync("Deliveries Service"))
+                        .Get("ping", ctx => ctx.Response.WriteAsync("pong")))
                     .UseJaeger()
                     .UseErrorHandler()
                     .UseRabbitMq()

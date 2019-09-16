@@ -311,3 +311,5 @@ __pycache__/
 
 # diff
 *.orig
+
+logs

@@ -34,13 +34,13 @@ namespace Conveyor.Services.Pricing
                     .UseConsul()
                     .UseJaeger()
                     .UseEndpoints(endpoints => endpoints
+                        .Get("", ctx => ctx.Response.WriteAsync("Pricing Service"))
                         .Get("ping", ctx => ctx.Response.WriteAsync("pong"))
                         .Get<GetOrderPricing>("pricing/{orderId}/orders", (query, ctx) =>
                         {
                             var json = JsonConvert.SerializeObject(new PricingDto
                             {
-                                OrderId = query.OrderId,
-                                TotalAmount = 20.50m
+                                OrderId = query.OrderId, TotalAmount = 20.50m
                             });
 
                             return ctx.Response.WriteAsync(json);

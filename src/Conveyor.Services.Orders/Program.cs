@@ -20,6 +20,7 @@ using Conveyor.Services.Orders.Events.External;
 using Conveyor.Services.Orders.RabbitMQ;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Conveyor.Services.Orders
@@ -53,8 +54,10 @@ namespace Conveyor.Services.Orders
                     .Build())
                 .Configure(app => app
                     .UseDispatcherEndpoints(endpoints => endpoints
+                        .Get("", ctx => ctx.Response.WriteAsync("Orders Service"))
+                        .Get("ping", ctx => ctx.Response.WriteAsync("pong"))
                         .Post<CreateOrder>("orders",
-                            afterDispatch: (cmd, ctx) => ctx.Response.Created($"resources/{cmd.Id}")))
+                            afterDispatch: (cmd, ctx) => ctx.Response.Created($"orders/{cmd.OrderId}")))
                     .UseConsul()
                     .UseJaeger()
                     .UseMetrics()
