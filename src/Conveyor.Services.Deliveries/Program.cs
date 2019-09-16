@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Convey;
+using Convey.CQRS.Events;
+using Convey.Discovery.Consul;
+using Convey.LoadBalancing.Fabio;
+using Convey.Logging;
+using Convey.MessageBrokers.CQRS;
+using Convey.MessageBrokers.RabbitMQ;
+using Convey.Tracing.Jaeger;
+using Convey.Tracing.Jaeger.RabbitMQ;
+using Convey.WebApi;
+using Conveyor.Services.Deliveries.Events.External;
+using Conveyor.Services.Deliveries.RabbitMQ;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Conveyor.Services.Deliveries
 {
@@ -17,8 +23,24 @@ namespace Conveyor.Services.Deliveries
             CreateWebHostBuilder(args).Build().Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+            => WebHost.CreateDefaultBuilder(args)
+                .ConfigureServices(services => services
+                    .AddOpenTracing()
+                    .AddConvey()
+                    .AddConsul()
+                    .AddFabio()
+                    .AddJaeger()
+                    .AddEventHandlers()
+                    .AddInMemoryEventDispatcher()
+                    .AddRabbitMq<CorrelationContext>(plugins: p => p.RegisterJaeger())
+                    .AddWebApi()
+                    .Build())
+                .Configure(app => app
+                    .UseJaeger()
+                    .UseErrorHandler()
+                    .UseRabbitMq()
+                    .SubscribeEvent<OrderCreated>())
+                .UseLogging();
     }
 }

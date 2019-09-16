@@ -161,3 +161,231 @@ Object name: 'System.Net.Http.HttpConnection+HttpConnectionResponseContent'.
 2019-09-16 13:22:00.428 +02:00 [INF] Received HTTP response after 36.784ms - "OK"
 2019-09-16 13:22:00.437 +02:00 [INF] End processing HTTP request after 72.227100000000007ms - "OK"
 2019-09-16 13:22:02.750 +02:00 [INF] Request finished in 4860.0944ms 201 
+2019-09-16 14:18:55.332 +02:00 [INF] Declaring queue conveyor.services.orders/orders.delivery_started.
+2019-09-16 14:18:55.475 +02:00 [INF] Declaring exchange orders.
+2019-09-16 14:18:55.490 +02:00 [INF] Binding queue conveyor.services.orders/orders.delivery_started to exchange orders with routing key orders.delivery_started
+2019-09-16 14:18:55.520 +02:00 [INF] Preparing to consume message from queue 'conveyor.services.orders/orders.delivery_started'.
+2019-09-16 14:19:36.835 +02:00 [INF] Declaring queue conveyor.services.orders/orders.delivery_started.
+2019-09-16 14:19:37.016 +02:00 [INF] Declaring exchange orders.
+2019-09-16 14:19:37.029 +02:00 [INF] Binding queue conveyor.services.orders/orders.delivery_started to exchange orders with routing key orders.delivery_started
+2019-09-16 14:19:37.057 +02:00 [INF] Preparing to consume message from queue 'conveyor.services.orders/orders.delivery_started'.
+2019-09-16 14:19:58.544 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/orders application/json 57
+2019-09-16 14:19:59.011 +02:00 [INF] Start processing HTTP request GET "http://localhost:5002/pricing/00000000-0000-0000-0000-000000000000/orders"
+2019-09-16 14:19:59.017 +02:00 [INF] Sending HTTP request GET "http://localhost:5002/pricing/00000000-0000-0000-0000-000000000000/orders"
+2019-09-16 14:19:59.327 +02:00 [INF] Received HTTP response after 308.2307ms - "OK"
+2019-09-16 14:19:59.335 +02:00 [INF] End processing HTTP request after 326.6789ms - "OK"
+2019-09-16 14:19:59.636 +02:00 [INF] Setting 'Publish Acknowledge' for channel '3'
+2019-09-16 14:19:59.653 +02:00 [INF] Setting up publish acknowledgement for 1 with timeout "00:00:01"
+2019-09-16 14:19:59.658 +02:00 [INF] Sequence 1 added to dictionary
+2019-09-16 14:19:59.661 +02:00 [INF] Performing basic publish with routing key orders.order_created on exchange orders.
+2019-09-16 14:19:59.680 +02:00 [INF] Recieived ack for 1
+2019-09-16 14:19:59.712 +02:00 [INF] Request finished in 1167.111ms 201 
+2019-09-16 14:20:41.190 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/orders application/json 57
+2019-09-16 14:20:41.206 +02:00 [INF] Start processing HTTP request GET "http://localhost:5002/pricing/00000000-0000-0000-0000-000000000000/orders"
+2019-09-16 14:20:41.208 +02:00 [INF] Sending HTTP request GET "http://localhost:5002/pricing/00000000-0000-0000-0000-000000000000/orders"
+2019-09-16 14:20:41.231 +02:00 [INF] Received HTTP response after 22.8432ms - "OK"
+2019-09-16 14:20:41.236 +02:00 [INF] End processing HTTP request after 30.242700000000003ms - "OK"
+2019-09-16 14:20:41.313 +02:00 [INF] Setting up publish acknowledgement for 2 with timeout "00:00:01"
+2019-09-16 14:20:41.323 +02:00 [INF] Sequence 2 added to dictionary
+2019-09-16 14:20:41.327 +02:00 [INF] Performing basic publish with routing key orders.order_created on exchange orders.
+2019-09-16 14:20:41.335 +02:00 [INF] Recieived ack for 2
+2019-09-16 14:20:41.337 +02:00 [INF] Request finished in 146.9155ms 201 
+2019-09-16 14:23:10.555 +02:00 [INF] Declaring queue conveyor.services.orders/deliveries.delivery_started.
+2019-09-16 14:23:10.757 +02:00 [INF] Declaring exchange deliveries.
+2019-09-16 14:23:10.778 +02:00 [INF] Binding queue conveyor.services.orders/deliveries.delivery_started to exchange deliveries with routing key deliveries.delivery_started
+2019-09-16 14:23:10.806 +02:00 [INF] Preparing to consume message from queue 'conveyor.services.orders/deliveries.delivery_started'.
+2019-09-16 14:23:28.357 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/orders application/json 57
+2019-09-16 14:23:28.774 +02:00 [INF] Start processing HTTP request GET "http://localhost:5002/pricing/00000000-0000-0000-0000-000000000000/orders"
+2019-09-16 14:23:28.781 +02:00 [INF] Sending HTTP request GET "http://localhost:5002/pricing/00000000-0000-0000-0000-000000000000/orders"
+2019-09-16 14:23:28.803 +02:00 [INF] Received HTTP response after 19.2844ms - "OK"
+2019-09-16 14:23:28.814 +02:00 [INF] End processing HTTP request after 44.938700000000004ms - "OK"
+2019-09-16 14:23:29.043 +02:00 [INF] Declaring exchange orders.
+2019-09-16 14:23:29.081 +02:00 [INF] Setting 'Publish Acknowledge' for channel '3'
+2019-09-16 14:23:29.097 +02:00 [INF] Setting up publish acknowledgement for 1 with timeout "00:00:01"
+2019-09-16 14:23:29.102 +02:00 [INF] Sequence 1 added to dictionary
+2019-09-16 14:23:29.109 +02:00 [INF] Performing basic publish with routing key orders.order_created on exchange orders.
+2019-09-16 14:23:29.145 +02:00 [INF] Recieived ack for 1
+2019-09-16 14:23:29.185 +02:00 [INF] Request finished in 831.9286ms 201 
+2019-09-16 14:23:34.586 +02:00 [INF] Handling a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f'. 
+2019-09-16 14:23:34.711 +02:00 [ERR] Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Convey.MessageBrokers.CQRS.Extensions.<>c__3`1.<SubscribeEvent>b__3_0(IServiceProvider sp, T command, ICorrelationContext ctx)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+2019-09-16 14:23:35.024 +02:00 [INF] Handling a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f'. 
+2019-09-16 14:23:35.090 +02:00 [ERR] Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Convey.MessageBrokers.CQRS.Extensions.<>c__3`1.<SubscribeEvent>b__3_0(IServiceProvider sp, T command, ICorrelationContext ctx)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+2019-09-16 14:23:37.011 +02:00 [INF] Handling a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f'. Retry: 1'.
+2019-09-16 14:23:37.094 +02:00 [ERR] Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Convey.MessageBrokers.CQRS.Extensions.<>c__3`1.<SubscribeEvent>b__3_0(IServiceProvider sp, T command, ICorrelationContext ctx)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+2019-09-16 14:23:37.215 +02:00 [INF] Handling a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f'. Retry: 1'.
+2019-09-16 14:23:37.241 +02:00 [ERR] Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Convey.MessageBrokers.CQRS.Extensions.<>c__3`1.<SubscribeEvent>b__3_0(IServiceProvider sp, T command, ICorrelationContext ctx)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+2019-09-16 14:23:39.197 +02:00 [INF] Handling a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f'. Retry: 2'.
+2019-09-16 14:23:39.230 +02:00 [ERR] Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Convey.MessageBrokers.CQRS.Extensions.<>c__3`1.<SubscribeEvent>b__3_0(IServiceProvider sp, T command, ICorrelationContext ctx)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+2019-09-16 14:23:39.308 +02:00 [INF] Handling a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f'. Retry: 2'.
+2019-09-16 14:23:39.348 +02:00 [ERR] Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Convey.MessageBrokers.CQRS.Extensions.<>c__3`1.<SubscribeEvent>b__3_0(IServiceProvider sp, T command, ICorrelationContext ctx)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+2019-09-16 14:23:41.314 +02:00 [INF] Handling a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f'. Retry: 3'.
+2019-09-16 14:23:41.341 +02:00 [ERR] Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Convey.MessageBrokers.CQRS.Extensions.<>c__3`1.<SubscribeEvent>b__3_0(IServiceProvider sp, T command, ICorrelationContext ctx)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+2019-09-16 14:23:41.430 +02:00 [INF] Handling a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f'. Retry: 3'.
+2019-09-16 14:23:41.552 +02:00 [ERR] Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Convey.MessageBrokers.CQRS.Extensions.<>c__3`1.<SubscribeEvent>b__3_0(IServiceProvider sp, T command, ICorrelationContext ctx)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+2019-09-16 14:23:41.573 +02:00 [ERR] Unable to handle a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f', retry 3/3...
+System.Exception: Unable to handle a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f', retry 3/3... ---> System.NullReferenceException: Object reference not set to an instance of an object.
+   at Convey.MessageBrokers.CQRS.Extensions.<>c__3`1.<SubscribeEvent>b__3_0(IServiceProvider sp, T command, ICorrelationContext ctx)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+   --- End of inner exception stack trace ---
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Polly.Retry.AsyncRetryEngine.ImplementationAsync[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldRetryExceptionPredicates, ResultPredicates`1 shouldRetryResultPredicates, Func`5 onRetryAsync, Int32 permittedRetryCount, IEnumerable`1 sleepDurationsEnumerable, Func`4 sleepDurationProvider, Boolean continueOnCapturedContext)
+   at Polly.AsyncPolicy.ExecuteAsync[TResult](Func`3 action, Context context, CancellationToken cancellationToken, Boolean continueOnCapturedContext)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass7_0`1.<<Subscribe>b__0>d.MoveNext()
+2019-09-16 14:23:41.729 +02:00 [ERR] Unable to handle a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f', retry 3/3...
+System.Exception: Unable to handle a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f', retry 3/3... ---> System.NullReferenceException: Object reference not set to an instance of an object.
+   at Convey.MessageBrokers.CQRS.Extensions.<>c__3`1.<SubscribeEvent>b__3_0(IServiceProvider sp, T command, ICorrelationContext ctx)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+   --- End of inner exception stack trace ---
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Polly.Retry.AsyncRetryEngine.ImplementationAsync[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldRetryExceptionPredicates, ResultPredicates`1 shouldRetryResultPredicates, Func`5 onRetryAsync, Int32 permittedRetryCount, IEnumerable`1 sleepDurationsEnumerable, Func`4 sleepDurationProvider, Boolean continueOnCapturedContext)
+   at Polly.AsyncPolicy.ExecuteAsync[TResult](Func`3 action, Context context, CancellationToken cancellationToken, Boolean continueOnCapturedContext)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass7_0`1.<<Subscribe>b__0>d.MoveNext()
+2019-09-16 14:23:42.137 +02:00 [INF] Handling a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f'. 
+2019-09-16 14:23:42.402 +02:00 [ERR] Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Convey.MessageBrokers.CQRS.Extensions.<>c__3`1.<SubscribeEvent>b__3_0(IServiceProvider sp, T command, ICorrelationContext ctx)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+2019-09-16 14:23:42.402 +02:00 [INF] Handling a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f'. 
+2019-09-16 14:23:42.693 +02:00 [ERR] Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Convey.MessageBrokers.CQRS.Extensions.<>c__3`1.<SubscribeEvent>b__3_0(IServiceProvider sp, T command, ICorrelationContext ctx)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+2019-09-16 14:23:44.611 +02:00 [INF] Handling a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f'. Retry: 1'.
+2019-09-16 14:23:44.641 +02:00 [ERR] Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Convey.MessageBrokers.CQRS.Extensions.<>c__3`1.<SubscribeEvent>b__3_0(IServiceProvider sp, T command, ICorrelationContext ctx)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+2019-09-16 14:23:44.900 +02:00 [INF] Handling a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f'. Retry: 1'.
+2019-09-16 14:23:44.925 +02:00 [ERR] Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Convey.MessageBrokers.CQRS.Extensions.<>c__3`1.<SubscribeEvent>b__3_0(IServiceProvider sp, T command, ICorrelationContext ctx)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+2019-09-16 14:23:46.702 +02:00 [INF] Handling a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f'. Retry: 2'.
+2019-09-16 14:23:46.734 +02:00 [ERR] Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Convey.MessageBrokers.CQRS.Extensions.<>c__3`1.<SubscribeEvent>b__3_0(IServiceProvider sp, T command, ICorrelationContext ctx)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+2019-09-16 14:23:47.008 +02:00 [INF] Handling a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f'. Retry: 2'.
+2019-09-16 14:23:47.041 +02:00 [ERR] Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Convey.MessageBrokers.CQRS.Extensions.<>c__3`1.<SubscribeEvent>b__3_0(IServiceProvider sp, T command, ICorrelationContext ctx)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+2019-09-16 14:23:48.804 +02:00 [INF] Handling a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f'. Retry: 3'.
+2019-09-16 14:23:48.833 +02:00 [ERR] Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Convey.MessageBrokers.CQRS.Extensions.<>c__3`1.<SubscribeEvent>b__3_0(IServiceProvider sp, T command, ICorrelationContext ctx)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+2019-09-16 14:23:49.034 +02:00 [ERR] Unable to handle a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f', retry 3/3...
+System.Exception: Unable to handle a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f', retry 3/3... ---> System.NullReferenceException: Object reference not set to an instance of an object.
+   at Convey.MessageBrokers.CQRS.Extensions.<>c__3`1.<SubscribeEvent>b__3_0(IServiceProvider sp, T command, ICorrelationContext ctx)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+   --- End of inner exception stack trace ---
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Polly.Retry.AsyncRetryEngine.ImplementationAsync[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldRetryExceptionPredicates, ResultPredicates`1 shouldRetryResultPredicates, Func`5 onRetryAsync, Int32 permittedRetryCount, IEnumerable`1 sleepDurationsEnumerable, Func`4 sleepDurationProvider, Boolean continueOnCapturedContext)
+   at Polly.AsyncPolicy.ExecuteAsync[TResult](Func`3 action, Context context, CancellationToken cancellationToken, Boolean continueOnCapturedContext)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass7_0`1.<<Subscribe>b__0>d.MoveNext()
+2019-09-16 14:23:49.119 +02:00 [INF] Handling a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f'. Retry: 3'.
+2019-09-16 14:23:49.573 +02:00 [ERR] Exception thrown. Will be handled by Exception Handler
+2019-09-16 14:23:49.587 +02:00 [ERR] Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Convey.MessageBrokers.CQRS.Extensions.<>c__3`1.<SubscribeEvent>b__3_0(IServiceProvider sp, T command, ICorrelationContext ctx)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+2019-09-16 14:23:49.596 +02:00 [INF] Unhandled exception thrown when consuming message
+System.Exception: Unable to handle a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f', retry 3/3... ---> System.NullReferenceException: Object reference not set to an instance of an object.
+   at Convey.MessageBrokers.CQRS.Extensions.<>c__3`1.<SubscribeEvent>b__3_0(IServiceProvider sp, T command, ICorrelationContext ctx)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+   --- End of inner exception stack trace ---
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Polly.Retry.AsyncRetryEngine.ImplementationAsync[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldRetryExceptionPredicates, ResultPredicates`1 shouldRetryResultPredicates, Func`5 onRetryAsync, Int32 permittedRetryCount, IEnumerable`1 sleepDurationsEnumerable, Func`4 sleepDurationProvider, Boolean continueOnCapturedContext)
+   at Polly.AsyncPolicy.ExecuteAsync[TResult](Func`3 action, Context context, CancellationToken cancellationToken, Boolean continueOnCapturedContext)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass7_0`1.<<Subscribe>b__0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at RawRabbit.Pipe.Middleware.HandlerInvocationMiddleware.InvokeMessageHandler(IPipeContext context, CancellationToken token)
+   at RawRabbit.Pipe.Middleware.HandlerInvocationMiddleware.InvokeAsync(IPipeContext context, CancellationToken token)
+   at Convey.MessageBrokers.RabbitMQ.Extensions.RetryStagedMiddleware.InvokeAsync(IPipeContext context, CancellationToken token)
+   at Convey.Tracing.Jaeger.RabbitMQ.Middlewares.JaegerStagedMiddleware.InvokeAsync(IPipeContext context, CancellationToken token)
+   at RawRabbit.Pipe.Middleware.ExceptionHandlingMiddleware.InvokeAsync(IPipeContext context, CancellationToken token)
+2019-09-16 14:23:49.773 +02:00 [ERR] Unable to handle a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f', retry 3/3...
+System.Exception: Unable to handle a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f', retry 3/3... ---> System.NullReferenceException: Object reference not set to an instance of an object.
+   at Convey.MessageBrokers.CQRS.Extensions.<>c__3`1.<SubscribeEvent>b__3_0(IServiceProvider sp, T command, ICorrelationContext ctx)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+   --- End of inner exception stack trace ---
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Polly.Retry.AsyncRetryEngine.ImplementationAsync[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldRetryExceptionPredicates, ResultPredicates`1 shouldRetryResultPredicates, Func`5 onRetryAsync, Int32 permittedRetryCount, IEnumerable`1 sleepDurationsEnumerable, Func`4 sleepDurationProvider, Boolean continueOnCapturedContext)
+   at Polly.AsyncPolicy.ExecuteAsync[TResult](Func`3 action, Context context, CancellationToken cancellationToken, Boolean continueOnCapturedContext)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass7_0`1.<<Subscribe>b__0>d.MoveNext()
+2019-09-16 14:23:49.787 +02:00 [INF] Declaring exchange orders.error.
+2019-09-16 14:23:50.196 +02:00 [ERR] Exception thrown. Will be handled by Exception Handler
+2019-09-16 14:23:50.198 +02:00 [INF] Unhandled exception thrown when consuming message
+System.Exception: Unable to handle a message: 'delivery_started' with correlation id: '43fc5694cfca4641b1449e6dba26788f', retry 3/3... ---> System.NullReferenceException: Object reference not set to an instance of an object.
+   at Convey.MessageBrokers.CQRS.Extensions.<>c__3`1.<SubscribeEvent>b__3_0(IServiceProvider sp, T command, ICorrelationContext ctx)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+   --- End of inner exception stack trace ---
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass8_0`1.<<TryHandleAsync>b__1>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Polly.Retry.AsyncRetryEngine.ImplementationAsync[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldRetryExceptionPredicates, ResultPredicates`1 shouldRetryResultPredicates, Func`5 onRetryAsync, Int32 permittedRetryCount, IEnumerable`1 sleepDurationsEnumerable, Func`4 sleepDurationProvider, Boolean continueOnCapturedContext)
+   at Polly.AsyncPolicy.ExecuteAsync[TResult](Func`3 action, Context context, CancellationToken cancellationToken, Boolean continueOnCapturedContext)
+   at Convey.MessageBrokers.RabbitMQ.Subscribers.BusSubscriber.<>c__DisplayClass7_0`1.<<Subscribe>b__0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at RawRabbit.Pipe.Middleware.HandlerInvocationMiddleware.InvokeMessageHandler(IPipeContext context, CancellationToken token)
+   at RawRabbit.Pipe.Middleware.HandlerInvocationMiddleware.InvokeAsync(IPipeContext context, CancellationToken token)
+   at Convey.MessageBrokers.RabbitMQ.Extensions.RetryStagedMiddleware.InvokeAsync(IPipeContext context, CancellationToken token)
+   at Convey.Tracing.Jaeger.RabbitMQ.Middlewares.JaegerStagedMiddleware.InvokeAsync(IPipeContext context, CancellationToken token)
+   at RawRabbit.Pipe.Middleware.ExceptionHandlingMiddleware.InvokeAsync(IPipeContext context, CancellationToken token)
+2019-09-16 14:24:47.121 +02:00 [INF] Declaring queue conveyor.services.orders/deliveries.delivery_started.
+2019-09-16 14:24:47.277 +02:00 [INF] Declaring exchange deliveries.
+2019-09-16 14:24:47.300 +02:00 [INF] Binding queue conveyor.services.orders/deliveries.delivery_started to exchange deliveries with routing key deliveries.delivery_started
+2019-09-16 14:24:47.325 +02:00 [INF] Preparing to consume message from queue 'conveyor.services.orders/deliveries.delivery_started'.
+2019-09-16 14:25:22.181 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/orders application/json 57
+2019-09-16 14:25:22.615 +02:00 [INF] Start processing HTTP request GET "http://localhost:5002/pricing/00000000-0000-0000-0000-000000000000/orders"
+2019-09-16 14:25:22.622 +02:00 [INF] Sending HTTP request GET "http://localhost:5002/pricing/00000000-0000-0000-0000-000000000000/orders"
+2019-09-16 14:25:22.643 +02:00 [INF] Received HTTP response after 17.8981ms - "OK"
+2019-09-16 14:25:22.651 +02:00 [INF] End processing HTTP request after 37.5867ms - "OK"
+2019-09-16 14:25:22.880 +02:00 [INF] Declaring exchange orders.
+2019-09-16 14:25:22.927 +02:00 [INF] Setting 'Publish Acknowledge' for channel '3'
+2019-09-16 14:25:22.945 +02:00 [INF] Setting up publish acknowledgement for 1 with timeout "00:00:01"
+2019-09-16 14:25:22.952 +02:00 [INF] Sequence 1 added to dictionary
+2019-09-16 14:25:22.963 +02:00 [INF] Performing basic publish with routing key orders.order_created on exchange orders.
+2019-09-16 14:25:23.052 +02:00 [INF] Recieived ack for 1
+2019-09-16 14:25:23.117 +02:00 [INF] Request finished in 939.6282ms 201 
+2019-09-16 14:25:23.125 +02:00 [INF] Handling a message: 'delivery_started' with correlation id: 'acf38186086648018bc5f5b77bbc073d'. 
+2019-09-16 14:25:23.163 +02:00 [INF] Received delivery started event with id e1900238-f13d-4f62-9ee3-a4b651f92220
+2019-09-16 14:25:23.164 +02:00 [INF] Handled a message: 'delivery_started' with correlation id: 'acf38186086648018bc5f5b77bbc073d'. 
+2019-09-16 14:25:23.167 +02:00 [INF] Handling a message: 'delivery_started' with correlation id: 'acf38186086648018bc5f5b77bbc073d'. 
+2019-09-16 14:25:23.169 +02:00 [INF] Received delivery started event with id e1900238-f13d-4f62-9ee3-a4b651f92220
+2019-09-16 14:25:23.173 +02:00 [INF] Handled a message: 'delivery_started' with correlation id: 'acf38186086648018bc5f5b77bbc073d'. 
+2019-09-16 14:25:23.328 +02:00 [INF] Handling a message: 'delivery_started' with correlation id: 'acf38186086648018bc5f5b77bbc073d'. 
+2019-09-16 14:25:23.331 +02:00 [INF] Received delivery started event with id b5a88fc0-9732-462d-90e4-1493903635b7
+2019-09-16 14:25:23.333 +02:00 [INF] Handled a message: 'delivery_started' with correlation id: 'acf38186086648018bc5f5b77bbc073d'. 
+2019-09-16 14:25:23.335 +02:00 [INF] Handling a message: 'delivery_started' with correlation id: 'acf38186086648018bc5f5b77bbc073d'. 
+2019-09-16 14:25:23.337 +02:00 [INF] Received delivery started event with id b5a88fc0-9732-462d-90e4-1493903635b7
+2019-09-16 14:25:23.340 +02:00 [INF] Handled a message: 'delivery_started' with correlation id: 'acf38186086648018bc5f5b77bbc073d'. 

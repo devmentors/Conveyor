@@ -1,10 +1,12 @@
 ﻿using System;
 using Convey;
 using Convey.CQRS.Commands;
+using Convey.CQRS.Events;
 using Convey.Discovery.Consul;
 using Convey.HTTP;
 using Convey.LoadBalancing.Fabio;
 using Convey.Logging;
+using Convey.MessageBrokers.CQRS;
 using Convey.MessageBrokers.RabbitMQ;
 using Convey.Metrics.AppMetrics;
 using Convey.Persistence.MongoDB;
@@ -14,6 +16,7 @@ using Convey.WebApi;
 using Convey.WebApi.CQRS;
 using Conveyor.Services.Orders.Commands;
 using Conveyor.Services.Orders.Domain;
+using Conveyor.Services.Orders.Events.External;
 using Conveyor.Services.Orders.RabbitMQ;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
@@ -41,7 +44,9 @@ namespace Conveyor.Services.Orders
                     .AddMongo()
                     .AddMongoRepository<Order, Guid>("orders")
                     .AddCommandHandlers()
+                    .AddEventHandlers()
                     .AddInMemoryCommandDispatcher()
+                    .AddInMemoryEventDispatcher()
                     .AddRabbitMq<CorrelationContext>(plugins: p => p.RegisterJaeger())
                     .AddMetrics()
                     .AddWebApi()
@@ -54,7 +59,9 @@ namespace Conveyor.Services.Orders
                     .UseJaeger()
                     .UseMetrics()
                     .UseErrorHandler()
-                    .UseRabbitMq())
+                    .UseRabbitMq()
+                    .SubscribeEvent<DeliveryStarted>())
+                .UseLogging()
                 .UseLogging();
     }
 }
