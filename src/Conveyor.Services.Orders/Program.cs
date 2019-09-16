@@ -2,6 +2,7 @@
 using Convey;
 using Convey.CQRS.Commands;
 using Convey.CQRS.Events;
+using Convey.CQRS.Queries;
 using Convey.Discovery.Consul;
 using Convey.HTTP;
 using Convey.LoadBalancing.Fabio;
@@ -16,9 +17,12 @@ using Convey.WebApi;
 using Convey.WebApi.CQRS;
 using Conveyor.Services.Orders.Commands;
 using Conveyor.Services.Orders.Domain;
+using Conveyor.Services.Orders.DTO;
 using Conveyor.Services.Orders.Events.External;
+using Conveyor.Services.Orders.Queries;
 using Conveyor.Services.Orders.RabbitMQ;
 using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -46,8 +50,10 @@ namespace Conveyor.Services.Orders
                     .AddMongoRepository<Order, Guid>("orders")
                     .AddCommandHandlers()
                     .AddEventHandlers()
+                    .AddQueryHandlers()
                     .AddInMemoryCommandDispatcher()
                     .AddInMemoryEventDispatcher()
+                    .AddInMemoryQueryDispatcher()
                     .AddRabbitMq<CorrelationContext>(plugins: p => p.RegisterJaeger())
                     .AddMetrics()
                     .AddWebApi()
@@ -56,12 +62,14 @@ namespace Conveyor.Services.Orders
                     .UseDispatcherEndpoints(endpoints => endpoints
                         .Get("", ctx => ctx.Response.WriteAsync("Orders Service"))
                         .Get("ping", ctx => ctx.Response.WriteAsync("pong"))
+                        .Get<GetOrder, OrderDto>("orders/{orderId}")
                         .Post<CreateOrder>("orders",
                             afterDispatch: (cmd, ctx) => ctx.Response.Created($"orders/{cmd.OrderId}")))
                     .UseConsul()
                     .UseJaeger()
                     .UseMetrics()
                     .UseErrorHandler()
+                    .UseMvc()
                     .UseRabbitMq()
                     .SubscribeEvent<DeliveryStarted>())
                 .UseLogging()

@@ -1,6 +1,9 @@
 ﻿using System.Threading.Tasks;
 using Convey.CQRS.Commands;
+using Convey.CQRS.Queries;
 using Conveyor.Services.Orders.Commands;
+using Conveyor.Services.Orders.DTO;
+using Conveyor.Services.Orders.Queries;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Conveyor.Services.Orders.Controllers
@@ -10,10 +13,24 @@ namespace Conveyor.Services.Orders.Controllers
     public class OrdersController : ControllerBase
     {
         private readonly ICommandDispatcher _commandDispatcher;
+        private readonly IQueryDispatcher _queryDispatcher;
 
-        public OrdersController(ICommandDispatcher commandDispatcher)
+        public OrdersController(ICommandDispatcher commandDispatcher, IQueryDispatcher queryDispatcher)
         {
             _commandDispatcher = commandDispatcher;
+            _queryDispatcher = queryDispatcher;
+        }
+
+        [HttpGet("{orderId}")]
+        public async Task<ActionResult<OrderDto>> Post([FromRoute] GetOrder query)
+        {
+            var order = await _queryDispatcher.QueryAsync(query);
+            if (order is null)
+            {
+                return NotFound();
+            }
+
+            return order;
         }
 
         [HttpPost]

@@ -38,7 +38,7 @@ namespace Conveyor.Services.Orders.Commands.Handlers
 
             _logger.LogInformation($"Fetching a price for order with id: {command.OrderId}...");
             var pricingDto = await _pricingServiceClient.GetOrderPricingAsync(command.OrderId);
-            _logger.LogInformation($"Received a price: for order with id: {command.OrderId}.");
+            _logger.LogInformation($"Order with id: {command.OrderId} will cost: {pricingDto.TotalAmount}$.");
             var order = new Order(command.OrderId, command.CustomerId, pricingDto.TotalAmount);
 
             await _repository.AddAsync(order);
