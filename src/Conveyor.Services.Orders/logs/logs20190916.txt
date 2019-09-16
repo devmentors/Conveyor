@@ -1,0 +1,163 @@
+2019-09-16 11:33:24.328 +02:00 [WRN] Connection was shutdown by "Application". ReplyText Connection close forced
+2019-09-16 12:50:52.121 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/orders  
+2019-09-16 12:50:52.352 +02:00 [INF] Request finished in 230.6114ms 404 
+2019-09-16 12:51:14.832 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/orders application/json 57
+2019-09-16 12:54:00.745 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/orders application/json 57
+2019-09-16 12:54:09.041 +02:00 [INF] Start processing HTTP request GET "http://localhost:5001/pricing/00000000-0000-0000-0000-000000000000/orders"
+2019-09-16 12:54:09.049 +02:00 [INF] Sending HTTP request GET "http://localhost:5001/pricing/00000000-0000-0000-0000-000000000000/orders"
+2019-09-16 12:54:12.856 +02:00 [INF] Start processing HTTP request GET "http://localhost:5001/pricing/00000000-0000-0000-0000-000000000000/orders"
+2019-09-16 12:54:12.871 +02:00 [INF] Sending HTTP request GET "http://localhost:5001/pricing/00000000-0000-0000-0000-000000000000/orders"
+2019-09-16 12:54:18.108 +02:00 [INF] Start processing HTTP request GET "http://localhost:5001/pricing/00000000-0000-0000-0000-000000000000/orders"
+2019-09-16 12:54:18.111 +02:00 [INF] Sending HTTP request GET "http://localhost:5001/pricing/00000000-0000-0000-0000-000000000000/orders"
+2019-09-16 12:54:24.840 +02:00 [ERR] Connection id "0HLPQIGN7TFCU", Request id "0HLPQIGN7TFCU:00000001": An unhandled exception was thrown by the application.
+System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.IO.IOException: The server returned an invalid or unrecognized response.
+   at System.Net.Http.HttpConnection.FillAsync()
+   at System.Net.Http.HttpConnection.ReadNextResponseHeaderLineAsync(Boolean foldedHeadersAllowed)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at System.Net.Http.HttpConnection.SendAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnection.SendAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithNtConnectionAuthAsync(HttpConnection connection, HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.FinishSendAsyncBuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)
+   at Convey.HTTP.ConveyHttpClient.<>c__DisplayClass15_0.<<SendAsync>b__1>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Polly.Retry.AsyncRetryEngine.ImplementationAsync[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldRetryExceptionPredicates, ResultPredicates`1 shouldRetryResultPredicates, Func`5 onRetryAsync, Int32 permittedRetryCount, IEnumerable`1 sleepDurationsEnumerable, Func`4 sleepDurationProvider, Boolean continueOnCapturedContext)
+   at Polly.AsyncPolicy.ExecuteAsync[TResult](Func`3 action, Context context, CancellationToken cancellationToken, Boolean continueOnCapturedContext)
+   at Convey.HTTP.ConveyHttpClient.SendAsync[T](String uri, Method method, Object data)
+   at Conveyor.Services.Orders.Commands.Handlers.CreateOrderHandler.HandleAsync(CreateOrder command) in C:\Repositories\Conveyor\src\Conveyor.Services.Orders\Commands\Handlers\CreateOrderHandler.cs:line 35
+   at Convey.WebApi.CQRS.Builders.DispatcherEndpointsBuilder.BuildCommandContext[T](T request, HttpContext context, Func`3 beforeDispatch, Func`3 afterDispatch)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at App.Metrics.AspNetCore.Tracking.Middleware.ApdexMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\ApdexMiddleware.cs:line 47
+   at App.Metrics.AspNetCore.Tracking.Middleware.PerRequestTimerMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\PerRequestTimerMiddleware.cs:line 47
+   at App.Metrics.AspNetCore.Tracking.Middleware.RequestTimerMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\RequestTimerMiddleware.cs:line 45
+   at App.Metrics.AspNetCore.Tracking.Middleware.ErrorRequestMeterMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\ErrorRequestMeterMiddleware.cs:line 50
+   at App.Metrics.AspNetCore.Tracking.Middleware.ActiveRequestCounterEndpointMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\ActiveRequestCounterEndpointMiddleware.cs:line 41
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2019-09-16 12:54:24.879 +02:00 [INF] Request finished in 24133.3694ms 0 
+2019-09-16 12:54:39.534 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/orders application/json 57
+2019-09-16 12:54:52.480 +02:00 [ERR] Connection id "0HLPQIGN7TFD3", Request id "0HLPQIGN7TFD3:00000001": An unhandled exception was thrown by the application.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Conveyor.Services.Orders.Commands.Handlers.CreateOrderHandler.HandleAsync(CreateOrder command) in C:\Repositories\Conveyor\src\Conveyor.Services.Orders\Commands\Handlers\CreateOrderHandler.cs:line 36
+   at Convey.WebApi.CQRS.Builders.DispatcherEndpointsBuilder.BuildCommandContext[T](T request, HttpContext context, Func`3 beforeDispatch, Func`3 afterDispatch)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at App.Metrics.AspNetCore.Tracking.Middleware.ApdexMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\ApdexMiddleware.cs:line 47
+   at App.Metrics.AspNetCore.Tracking.Middleware.PerRequestTimerMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\PerRequestTimerMiddleware.cs:line 47
+   at App.Metrics.AspNetCore.Tracking.Middleware.RequestTimerMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\RequestTimerMiddleware.cs:line 45
+   at App.Metrics.AspNetCore.Tracking.Middleware.ErrorRequestMeterMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\ErrorRequestMeterMiddleware.cs:line 50
+   at App.Metrics.AspNetCore.Tracking.Middleware.ActiveRequestCounterEndpointMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\ActiveRequestCounterEndpointMiddleware.cs:line 41
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2019-09-16 12:54:52.501 +02:00 [INF] Request finished in 12966.9472ms 500 
+2019-09-16 12:55:18.021 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/orders application/json 57
+2019-09-16 13:00:02.760 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/orders application/json 57
+2019-09-16 13:00:07.161 +02:00 [INF] Start processing HTTP request GET "http://localhost:5002/pricing/00000000-0000-0000-0000-000000000000/orders"
+2019-09-16 13:00:07.167 +02:00 [INF] Sending HTTP request GET "http://localhost:5002/pricing/00000000-0000-0000-0000-000000000000/orders"
+2019-09-16 13:00:07.444 +02:00 [INF] Received HTTP response after 273.60310000000004ms - "OK"
+2019-09-16 13:00:07.450 +02:00 [INF] End processing HTTP request after 291.2222ms - "OK"
+2019-09-16 13:00:09.434 +02:00 [ERR] Connection id "0HLPQIK348LV9", Request id "0HLPQIK348LV9:00000001": An unhandled exception was thrown by the application.
+System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Net.Http.HttpConnection+HttpConnectionResponseContent'.
+   at System.Net.Http.HttpContent.CheckDisposed()
+   at System.Net.Http.HttpContent.ReadAsStreamAsync()
+   at Convey.HTTP.ConveyHttpClient.SendAsync[T](String uri, Method method, Object data)
+   at Conveyor.Services.Orders.Commands.Handlers.CreateOrderHandler.HandleAsync(CreateOrder command) in C:\Repositories\Conveyor\src\Conveyor.Services.Orders\Commands\Handlers\CreateOrderHandler.cs:line 35
+   at Convey.WebApi.CQRS.Builders.DispatcherEndpointsBuilder.BuildCommandContext[T](T request, HttpContext context, Func`3 beforeDispatch, Func`3 afterDispatch)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at App.Metrics.AspNetCore.Tracking.Middleware.ApdexMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\ApdexMiddleware.cs:line 47
+   at App.Metrics.AspNetCore.Tracking.Middleware.PerRequestTimerMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\PerRequestTimerMiddleware.cs:line 47
+   at App.Metrics.AspNetCore.Tracking.Middleware.RequestTimerMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\RequestTimerMiddleware.cs:line 45
+   at App.Metrics.AspNetCore.Tracking.Middleware.ErrorRequestMeterMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\ErrorRequestMeterMiddleware.cs:line 50
+   at App.Metrics.AspNetCore.Tracking.Middleware.ActiveRequestCounterEndpointMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\ActiveRequestCounterEndpointMiddleware.cs:line 41
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2019-09-16 13:00:09.550 +02:00 [INF] Request finished in 6789.5302ms 500 
+2019-09-16 13:01:27.037 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/orders application/json 57
+2019-09-16 13:01:28.016 +02:00 [ERR] Connection id "0HLPQIKS63MAC", Request id "0HLPQIKS63MAC:00000001": An unhandled exception was thrown by the application.
+System.InvalidOperationException: Cannot resolve 'Convey.CQRS.Commands.ICommandHandler`1[Conveyor.Services.Orders.Commands.CreateOrder]' from root provider because it requires scoped service 'Conveyor.Services.Orders.Clients.IPricingServiceApi'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.ValidateResolution(Type serviceType, IServiceScope scope, IServiceScope rootScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.Microsoft.Extensions.DependencyInjection.ServiceLookup.IServiceProviderEngineCallback.OnResolve(Type serviceType, IServiceScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetService[T](IServiceProvider provider)
+   at Convey.CQRS.Commands.Dispatchers.CommandDispatcher.SendAsync[T](T command)
+   at Convey.WebApi.CQRS.Builders.DispatcherEndpointsBuilder.BuildCommandContext[T](T request, HttpContext context, Func`3 beforeDispatch, Func`3 afterDispatch)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at App.Metrics.AspNetCore.Tracking.Middleware.ApdexMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\ApdexMiddleware.cs:line 47
+   at App.Metrics.AspNetCore.Tracking.Middleware.PerRequestTimerMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\PerRequestTimerMiddleware.cs:line 47
+   at App.Metrics.AspNetCore.Tracking.Middleware.RequestTimerMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\RequestTimerMiddleware.cs:line 45
+   at App.Metrics.AspNetCore.Tracking.Middleware.ErrorRequestMeterMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\ErrorRequestMeterMiddleware.cs:line 50
+   at App.Metrics.AspNetCore.Tracking.Middleware.ActiveRequestCounterEndpointMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\ActiveRequestCounterEndpointMiddleware.cs:line 41
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2019-09-16 13:01:28.131 +02:00 [INF] Request finished in 1098.706ms 500 
+2019-09-16 13:03:11.183 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/orders application/json 57
+2019-09-16 13:03:58.793 +02:00 [INF] Start processing HTTP request GET "http://localhost:5002/pricing/00000000-0000-0000-0000-000000000000/orders"
+2019-09-16 13:03:58.805 +02:00 [INF] Sending HTTP request GET "http://localhost:5002/pricing/00000000-0000-0000-0000-000000000000/orders"
+2019-09-16 13:03:58.897 +02:00 [INF] Received HTTP response after 89.3253ms - "OK"
+2019-09-16 13:03:58.909 +02:00 [INF] End processing HTTP request after 121.4912ms - "OK"
+2019-09-16 13:04:01.630 +02:00 [ERR] Connection id "0HLPQILR96JSD", Request id "0HLPQILR96JSD:00000001": An unhandled exception was thrown by the application.
+System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Net.Http.HttpConnection+HttpConnectionResponseContent'.
+   at System.Net.Http.HttpContent.CheckDisposed()
+   at System.Net.Http.HttpContent.ReadAsStreamAsync()
+   at Convey.HTTP.ConveyHttpClient.SendAsync[T](String uri, Method method, Object data)
+   at Conveyor.Services.Orders.Commands.Handlers.CreateOrderHandler.HandleAsync(CreateOrder command) in C:\Repositories\Conveyor\src\Conveyor.Services.Orders\Commands\Handlers\CreateOrderHandler.cs:line 35
+   at Convey.WebApi.CQRS.Builders.DispatcherEndpointsBuilder.BuildCommandContext[T](T request, HttpContext context, Func`3 beforeDispatch, Func`3 afterDispatch)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at App.Metrics.AspNetCore.Tracking.Middleware.ApdexMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\ApdexMiddleware.cs:line 47
+   at App.Metrics.AspNetCore.Tracking.Middleware.PerRequestTimerMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\PerRequestTimerMiddleware.cs:line 47
+   at App.Metrics.AspNetCore.Tracking.Middleware.RequestTimerMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\RequestTimerMiddleware.cs:line 45
+   at App.Metrics.AspNetCore.Tracking.Middleware.ErrorRequestMeterMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\ErrorRequestMeterMiddleware.cs:line 50
+   at App.Metrics.AspNetCore.Tracking.Middleware.ActiveRequestCounterEndpointMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\ActiveRequestCounterEndpointMiddleware.cs:line 41
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2019-09-16 13:04:01.730 +02:00 [INF] Request finished in 50549.2257ms 500 
+2019-09-16 13:09:37.539 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/orders application/json 57
+2019-09-16 13:09:41.022 +02:00 [INF] Start processing HTTP request GET "http://localhost:5002/pricing/00000000-0000-0000-0000-000000000000/orders"
+2019-09-16 13:09:41.030 +02:00 [INF] Sending HTTP request GET "http://localhost:5002/pricing/00000000-0000-0000-0000-000000000000/orders"
+2019-09-16 13:09:41.055 +02:00 [INF] Received HTTP response after 21.686700000000002ms - "OK"
+2019-09-16 13:09:41.065 +02:00 [INF] End processing HTTP request after 46.4653ms - "OK"
+2019-09-16 13:09:43.104 +02:00 [ERR] Connection id "0HLPQIPECS2QA", Request id "0HLPQIPECS2QA:00000001": An unhandled exception was thrown by the application.
+System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Net.Http.HttpConnection+HttpConnectionResponseContent'.
+   at System.Net.Http.HttpContent.CheckDisposed()
+   at System.Net.Http.HttpContent.ReadAsStreamAsync()
+   at Convey.HTTP.ConveyHttpClient.SendAsync[T](String uri, Method method, Object data)
+   at Conveyor.Services.Orders.Commands.Handlers.CreateOrderHandler.HandleAsync(CreateOrder command) in C:\Repositories\Conveyor\src\Conveyor.Services.Orders\Commands\Handlers\CreateOrderHandler.cs:line 35
+   at Convey.WebApi.CQRS.Builders.DispatcherEndpointsBuilder.BuildCommandContext[T](T request, HttpContext context, Func`3 beforeDispatch, Func`3 afterDispatch)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at App.Metrics.AspNetCore.Tracking.Middleware.ApdexMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\ApdexMiddleware.cs:line 47
+   at App.Metrics.AspNetCore.Tracking.Middleware.PerRequestTimerMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\PerRequestTimerMiddleware.cs:line 47
+   at App.Metrics.AspNetCore.Tracking.Middleware.RequestTimerMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\RequestTimerMiddleware.cs:line 45
+   at App.Metrics.AspNetCore.Tracking.Middleware.ErrorRequestMeterMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\ErrorRequestMeterMiddleware.cs:line 50
+   at App.Metrics.AspNetCore.Tracking.Middleware.ActiveRequestCounterEndpointMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\ActiveRequestCounterEndpointMiddleware.cs:line 41
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2019-09-16 13:09:43.205 +02:00 [INF] Request finished in 5666.8209ms 500 
+2019-09-16 13:13:13.839 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/orders application/json 57
+2019-09-16 13:13:19.592 +02:00 [INF] Start processing HTTP request GET "http://localhost:5002/pricing/00000000-0000-0000-0000-000000000000/orders"
+2019-09-16 13:13:19.598 +02:00 [INF] Sending HTTP request GET "http://localhost:5002/pricing/00000000-0000-0000-0000-000000000000/orders"
+2019-09-16 13:13:19.629 +02:00 [INF] Received HTTP response after 20.7021ms - "OK"
+2019-09-16 13:13:19.640 +02:00 [INF] End processing HTTP request after 54.172900000000006ms - "OK"
+2019-09-16 13:13:21.702 +02:00 [ERR] Connection id "0HLPQIRESPG72", Request id "0HLPQIRESPG72:00000001": An unhandled exception was thrown by the application.
+System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'System.Net.Http.HttpConnection+HttpConnectionResponseContent'.
+   at System.Net.Http.HttpContent.CheckDisposed()
+   at System.Net.Http.HttpContent.ReadAsStreamAsync()
+   at Convey.HTTP.ConveyHttpClient.SendAsync[T](String uri, Method method, Object data)
+   at Conveyor.Services.Orders.Commands.Handlers.CreateOrderHandler.HandleAsync(CreateOrder command) in C:\Repositories\Conveyor\src\Conveyor.Services.Orders\Commands\Handlers\CreateOrderHandler.cs:line 35
+   at Convey.WebApi.CQRS.Builders.DispatcherEndpointsBuilder.BuildCommandContext[T](T request, HttpContext context, Func`3 beforeDispatch, Func`3 afterDispatch)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at App.Metrics.AspNetCore.Tracking.Middleware.ApdexMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\ApdexMiddleware.cs:line 47
+   at App.Metrics.AspNetCore.Tracking.Middleware.PerRequestTimerMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\PerRequestTimerMiddleware.cs:line 47
+   at App.Metrics.AspNetCore.Tracking.Middleware.RequestTimerMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\RequestTimerMiddleware.cs:line 45
+   at App.Metrics.AspNetCore.Tracking.Middleware.ErrorRequestMeterMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\ErrorRequestMeterMiddleware.cs:line 50
+   at App.Metrics.AspNetCore.Tracking.Middleware.ActiveRequestCounterEndpointMiddleware.Invoke(HttpContext context) in C:\projects\aspnetcore\src\App.Metrics.AspNetCore.Tracking\Middleware\ActiveRequestCounterEndpointMiddleware.cs:line 41
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2019-09-16 13:13:21.795 +02:00 [INF] Request finished in 7953.4381ms 500 
+2019-09-16 13:21:57.891 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/orders application/json 57
+2019-09-16 13:22:00.370 +02:00 [INF] Start processing HTTP request GET "http://localhost:5002/pricing/00000000-0000-0000-0000-000000000000/orders"
+2019-09-16 13:22:00.388 +02:00 [INF] Sending HTTP request GET "http://localhost:5002/pricing/00000000-0000-0000-0000-000000000000/orders"
+2019-09-16 13:22:00.428 +02:00 [INF] Received HTTP response after 36.784ms - "OK"
+2019-09-16 13:22:00.437 +02:00 [INF] End processing HTTP request after 72.227100000000007ms - "OK"
+2019-09-16 13:22:02.750 +02:00 [INF] Request finished in 4860.0944ms 201 
