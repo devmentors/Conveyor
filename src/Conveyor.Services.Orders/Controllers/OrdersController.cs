@@ -22,7 +22,7 @@ namespace Conveyor.Services.Orders.Controllers
         }
 
         [HttpGet("{orderId}")]
-        public async Task<ActionResult<OrderDto>> Post([FromRoute] GetOrder query)
+        public async Task<ActionResult<OrderDto>> Get([FromRoute] GetOrder query)
         {
             var order = await _queryDispatcher.QueryAsync(query);
             if (order is null)
