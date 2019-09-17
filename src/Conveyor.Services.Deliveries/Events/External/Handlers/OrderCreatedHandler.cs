@@ -20,8 +20,10 @@ namespace Conveyor.Services.Deliveries.Events.External.Handlers
 
         public Task HandleAsync(OrderCreated @event)
         {
-            _logger.LogInformation($"Received a 'order created' event with id: {@event.OrderId}");
-            return _publisher.PublishAsync(new DeliveryStarted(Guid.NewGuid()), new CorrelationContext());
+            _logger.LogInformation($"Received 'order created' event with order id: {@event.OrderId}");
+            var deliveryId = Guid.NewGuid();
+            _logger.LogInformation($"Starting a delivery with id: {deliveryId}");
+            return _publisher.PublishAsync(new DeliveryStarted(deliveryId), new CorrelationContext());
         }
     }
 }

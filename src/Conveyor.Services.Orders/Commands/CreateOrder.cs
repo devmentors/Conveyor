@@ -8,9 +8,9 @@ namespace Conveyor.Services.Orders.Commands
         public Guid OrderId { get; }
         public Guid CustomerId { get; }
 
-        public CreateOrder(Guid id, Guid customerId)
+        public CreateOrder(Guid orderId, Guid customerId)
         {
-            OrderId = id == Guid.Empty ? Guid.NewGuid() : id;
+            OrderId = orderId == Guid.Empty ? Guid.NewGuid() : orderId;
             CustomerId = customerId;
         }
     }
