@@ -1,6 +1,7 @@
 ﻿using Convey;
 using Convey.Discovery.Consul;
 using Convey.LoadBalancing.Fabio;
+using Convey.Logging;
 using Convey.Tracing.Jaeger;
 using Convey.WebApi;
 using Conveyor.Services.Pricing.DTO;
@@ -44,6 +45,7 @@ namespace Conveyor.Services.Pricing
                             });
 
                             return ctx.Response.WriteAsync(json);
-                        })));
+                        })))
+                .UseLogging();
     }
 }
