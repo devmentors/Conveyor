@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Convey.Configurations.Vault" Version="0.0.9" />
+    <PackageReference Include="Convey.Configurations.Vault" Version="0.0.11" />
     <PackageReference Include="Convey.Discovery.Consul" Version="0.0.23" />
     <PackageReference Include="Convey.HTTP" Version="0.0.10" />
     <PackageReference Include="Convey.LoadBalancing.Fabio" Version="0.0.11" />
