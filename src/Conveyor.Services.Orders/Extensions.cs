@@ -1,6 +1,4 @@
 using Convey;
-using Conveyor.Services.Orders.Clients;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Conveyor.Services.Orders
 {
@@ -8,7 +6,6 @@ namespace Conveyor.Services.Orders
     {
         public static IConveyBuilder AddServices(this IConveyBuilder builder)
         {
-            builder.Services.AddSingleton<IPricingServiceClient, PricingServiceClient>();
             return builder;
         }
     }
