@@ -7,17 +7,19 @@ scrape_configs:
     static_configs:
       - targets: ['prometheus:9090']
 
+  - job_name: 'deliveries'
+    static_configs:
+      - targets: ['localhost:5001']
+
   - job_name: 'orders'
     static_configs:
-      - targets: ['docker.for.mac.localhost:5000']
+      - targets: ['localhost:5002']
 
   - job_name: 'pricing'
     static_configs:
-      - targets: ['docker.for.mac.localhost:5001']
+      - targets: ['localhost:5003']
 
-  - job_name: 'deliveries'
-    static_configs:
-      - targets: ['docker.for.mac.localhost:5002']
+
       
 
   

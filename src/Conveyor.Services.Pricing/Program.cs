@@ -2,6 +2,7 @@
 using Convey.Discovery.Consul;
 using Convey.LoadBalancing.Fabio;
 using Convey.Logging;
+using Convey.Metrics.AppMetrics;
 using Convey.Tracing.Jaeger;
 using Convey.WebApi;
 using Conveyor.Services.Pricing.DTO;
@@ -29,14 +30,15 @@ namespace Conveyor.Services.Pricing
                     .AddConsul()
                     .AddFabio()
                     .AddJaeger()
+                    .AddMetrics()
                     .AddWebApi()
                     .Build())
                 .Configure(app => app
                     .UseConsul()
                     .UseJaeger()
+                    .UseMetrics()
                     .UseEndpoints(endpoints => endpoints
                         .Get("", ctx => ctx.Response.WriteAsync("Pricing Service"))
-                        .Get("ping", ctx => ctx.Response.WriteAsync("pong"))
                         .Get<GetOrderPricing>("pricing/{orderId}/orders", (query, ctx) =>
                         {
                             var json = JsonConvert.SerializeObject(new PricingDto

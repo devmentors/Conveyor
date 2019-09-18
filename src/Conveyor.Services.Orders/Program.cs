@@ -1,5 +1,6 @@
 ﻿using System;
 using Convey;
+using Convey.Configurations.Vault;
 using Convey.CQRS.Commands;
 using Convey.CQRS.Events;
 using Convey.CQRS.Queries;
@@ -61,18 +62,18 @@ namespace Conveyor.Services.Orders
                 .Configure(app => app
                     .UseDispatcherEndpoints(endpoints => endpoints
                         .Get("", ctx => ctx.Response.WriteAsync("Orders Service"))
-                        .Get("ping", ctx => ctx.Response.WriteAsync("pong"))
                         .Get<GetOrder, OrderDto>("orders/{orderId}")
                         .Post<CreateOrder>("orders",
                             afterDispatch: (cmd, ctx) => ctx.Response.Created($"orders/{cmd.OrderId}")))
                     .UseConsul()
                     .UseJaeger()
+                    .UseInitializers()
                     .UseMetrics()
                     .UseErrorHandler()
                     .UseMvc()
                     .UseRabbitMq()
                     .SubscribeEvent<DeliveryStarted>())
-                .UseLogging()
+                .UseVault()
                 .UseLogging();
     }
 }

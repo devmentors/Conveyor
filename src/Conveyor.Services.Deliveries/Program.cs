@@ -5,6 +5,7 @@ using Convey.LoadBalancing.Fabio;
 using Convey.Logging;
 using Convey.MessageBrokers.CQRS;
 using Convey.MessageBrokers.RabbitMQ;
+using Convey.Metrics.AppMetrics;
 using Convey.Tracing.Jaeger;
 using Convey.Tracing.Jaeger.RabbitMQ;
 using Convey.WebApi;
@@ -35,13 +36,14 @@ namespace Conveyor.Services.Deliveries
                     .AddEventHandlers()
                     .AddInMemoryEventDispatcher()
                     .AddRabbitMq<CorrelationContext>(plugins: p => p.RegisterJaeger())
+                    .AddMetrics()
                     .AddWebApi()
                     .Build())
                 .Configure(app => app
                     .UseEndpoints(endpoints => endpoints
-                        .Get("", ctx => ctx.Response.WriteAsync("Deliveries Service"))
-                        .Get("ping", ctx => ctx.Response.WriteAsync("pong")))
+                        .Get("", ctx => ctx.Response.WriteAsync("Deliveries Service")))
                     .UseJaeger()
+                    .UseMetrics()
                     .UseErrorHandler()
                     .UseRabbitMq()
                     .SubscribeEvent<OrderCreated>())
