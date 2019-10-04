@@ -15,7 +15,7 @@ namespace Conveyor.Services.Orders
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
             => WebHost.CreateDefaultBuilder(args)
-                .ConfigureServices(services => services.AddMvcCore())
+                .ConfigureServices(services => services.AddMvcCore().AddJsonFormatters())
                 .Configure(app => app.UseMvc())
                 .UseLogging();
     }
