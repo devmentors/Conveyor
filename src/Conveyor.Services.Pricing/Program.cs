@@ -39,7 +39,7 @@ namespace Conveyor.Services.Pricing
                     .UseMetrics()
                     .UseEndpoints(endpoints => endpoints
                         .Get("", ctx => ctx.Response.WriteAsync("Pricing Service"))
-                        .Get<GetOrderPricing>("pricing/{orderId}/orders", (query, ctx) =>
+                        .Get<GetOrderPricing>("orders/{orderId}/pricing", (query, ctx) =>
                         {
                             var json = JsonConvert.SerializeObject(new PricingDto
                             {
