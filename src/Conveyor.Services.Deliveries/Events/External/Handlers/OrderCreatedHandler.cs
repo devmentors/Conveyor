@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Convey.CQRS.Events;
 using Convey.MessageBrokers;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 
 namespace Conveyor.Services.Deliveries.Events.External.Handlers
 {
