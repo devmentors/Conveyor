@@ -27,7 +27,6 @@ namespace Conveyor.Services.Deliveries.Events.External.Handlers
             var deliveryId = Guid.NewGuid();
             _logger.LogInformation($"Starting a delivery with id: {deliveryId}");
             var correlationId = _messagePropertiesAccessor.MessageProperties.CorrelationId;
-            Console.WriteLine(JsonConvert.SerializeObject(_messagePropertiesAccessor.MessageProperties.Headers));
             return _publisher.PublishAsync(new DeliveryStarted(deliveryId), correlationId: correlationId);
         }
     }
