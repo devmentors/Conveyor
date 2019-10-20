@@ -2,10 +2,10 @@ using System;
 using System.Threading.Tasks;
 using Conveyor.Services.Orders.DTO;
 
-namespace Conveyor.Services.Orders.Clients
+namespace Conveyor.Services.Orders.Services
 {
     public interface IPricingServiceClient
     {
-        Task<PricingDto> GetOrderPricingAsync(Guid orderId);
+        Task<PricingDto> GetAsync(Guid orderId);
     }
 }

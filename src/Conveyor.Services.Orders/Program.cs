@@ -1,6 +1,5 @@
 ﻿using System;
 using Convey;
-using Convey.Configurations.Vault;
 using Convey.CQRS.Commands;
 using Convey.CQRS.Events;
 using Convey.CQRS.Queries;
@@ -21,12 +20,12 @@ using Conveyor.Services.Orders.Domain;
 using Conveyor.Services.Orders.DTO;
 using Conveyor.Services.Orders.Events.External;
 using Conveyor.Services.Orders.Queries;
-using Conveyor.Services.Orders.RabbitMQ;
-using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace Conveyor.Services.Orders
 {
@@ -34,46 +33,49 @@ namespace Conveyor.Services.Orders
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            CreateHostBuilder(args).Build().Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
-            => WebHost.CreateDefaultBuilder(args)
-                .ConfigureServices(services => services
-                    .AddOpenTracing()
-                    .AddConvey()
-                    .AddServices()
-                    .AddHttpClient()
-                    .AddConsul()
-                    .AddFabio()
-                    .AddJaeger()
-                    .AddMongo()
-                    .AddMongoRepository<Order, Guid>("orders")
-                    .AddCommandHandlers()
-                    .AddEventHandlers()
-                    .AddQueryHandlers()
-                    .AddInMemoryCommandDispatcher()
-                    .AddInMemoryEventDispatcher()
-                    .AddInMemoryQueryDispatcher()
-                    .AddRabbitMq<CorrelationContext>(plugins: p => p.RegisterJaeger())
-                    .AddMetrics()
-                    .AddWebApi()
-                    .Build())
-                .Configure(app => app
-                    .UseDispatcherEndpoints(endpoints => endpoints
-                        .Get("", ctx => ctx.Response.WriteAsync("Orders Service"))
-                        .Get<GetOrder, OrderDto>("orders/{orderId}")
-                        .Post<CreateOrder>("orders",
-                            afterDispatch: (cmd, ctx) => ctx.Response.Created($"orders/{cmd.OrderId}")))
-                    .UseConsul()
-                    .UseJaeger()
-                    .UseInitializers()
-                    .UseMetrics()
-                    .UseErrorHandler()
-                    .UseMvc()
-                    .UseRabbitMq()
-                    .SubscribeEvent<DeliveryStarted>())
-                .UseVault()
-                .UseLogging();
+        public static IHostBuilder CreateHostBuilder(string[] args)
+            => Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.ConfigureServices(services => services
+                        .Configure<KestrelServerOptions>(options => { options.AllowSynchronousIO = true; })
+                        .AddOpenTracing()
+                        .AddConvey()
+                        .AddServices()
+                        .AddHttpClient()
+                        .AddConsul()
+                        .AddFabio()
+                        .AddJaeger()
+                        .AddMongo()
+                        .AddMongoRepository<Order, Guid>("orders")
+                        .AddCommandHandlers()
+                        .AddEventHandlers()
+                        .AddQueryHandlers()
+                        .AddInMemoryCommandDispatcher()
+                        .AddInMemoryEventDispatcher()
+                        .AddInMemoryQueryDispatcher()
+                        .AddRabbitMq(plugins: p => p.AddJaegerRabbitMqPlugin())
+                        .AddMetrics()
+                        .AddWebApi()
+                        .Build())
+                    .Configure(app => app
+                        .UseRouting()
+                        .UseEndpoints(r => r.MapControllers())
+                        .UseDispatcherEndpoints(endpoints => endpoints
+                            .Get("", ctx => ctx.Response.WriteAsync("Orders Service"))
+                            .Get<GetOrder, OrderDto>("orders/{orderId}")
+                            .Post<CreateOrder>("orders",
+                                afterDispatch: (cmd, ctx) => ctx.Response.Created($"orders/{cmd.OrderId}")))
+                        .UseConsul()
+                        .UseJaeger()
+                        .UseInitializers()
+                        .UseMetrics()
+                        .UseErrorHandler()
+                        .UseRabbitMq()
+                        .SubscribeEvent<DeliveryStarted>())
+                    .UseLogging();
+            });
     }
 }

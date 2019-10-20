@@ -4,7 +4,7 @@ using Convey.MessageBrokers;
 
 namespace Conveyor.Services.Deliveries.Events.External
 {
-    [MessageNamespace("orders")]
+    [Message("orders")]
     public class OrderCreated : IEvent
     {
         public Guid OrderId { get; }
